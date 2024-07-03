@@ -4,7 +4,7 @@ using namespace std;
 
 class Similar {
 public:
-	int checkCharNum(const string& str1, const string& str2)
+	int checkCharNums(const string& str1, const string& str2)
 	{
 		int longLen = 0;
 		int shortLen = 0;
@@ -19,7 +19,7 @@ public:
 		}
 
 		if (longLen == shortLen) return 60;
-		if (longLen == (2 * shortLen)) return 0;
+		if (longLen >= (2 * shortLen)) return 0;
 
 		return ((2 - (double)longLen / shortLen)*60);
 	}
