@@ -4,8 +4,12 @@
 
 using namespace std;
 
-TEST(TestCaseName, TestLengthSame) {
+class SimilarFixture : public testing::Test {
+public:
 	Similar sim;
+};
+
+TEST_F(SimilarFixture, TestLengthSame) {
 	string str1 = "ASD";
 	string str2 = "DSA";
 
@@ -13,8 +17,7 @@ TEST(TestCaseName, TestLengthSame) {
 	EXPECT_EQ(result, 60);
 }
 
-TEST(TestCaseName, TestLengthDifferent1) {
-	Similar sim;
+TEST_F(SimilarFixture, TestLengthDifferent1) {
 	string str1 = "A";
 	string str2 = "BB";
 
@@ -22,8 +25,7 @@ TEST(TestCaseName, TestLengthDifferent1) {
 	EXPECT_EQ(result, 0);
 }
 
-TEST(TestCaseName, TestLengthDifferent2) {
-	Similar sim;
+TEST_F(SimilarFixture, TestLengthDifferent2) {
 	string str1 = "AAABB";
 	string str2 = "BAA";
 
@@ -31,8 +33,7 @@ TEST(TestCaseName, TestLengthDifferent2) {
 	EXPECT_EQ(result, 19);
 }
 
-TEST(TestCaseName, TestLengthDifferent3) {
-	Similar sim;
+TEST_F(SimilarFixture, TestLengthDifferent3) {
 	string str1 = "AA";
 	string str2 = "AAE";
 
