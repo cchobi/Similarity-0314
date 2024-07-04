@@ -25,12 +25,13 @@ public:
 	{
 		getLongShortLength(str1, str2);
 
-		if (len.longLen == len.shortLen) return 60;
+		if (len.longLen == len.shortLen) return MAX_LENGTH_POINT;
 		if (len.longLen >= (2 * len.shortLen)) return 0;
 
-		return ((2 - (double)len.longLen / len.shortLen)*60);
+		return ((2 - (double)len.longLen / len.shortLen)* MAX_LENGTH_POINT);
 	}
 
 private:
 	Length len;
+	const int MAX_LENGTH_POINT = 60;
 };
