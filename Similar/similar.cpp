@@ -35,35 +35,34 @@ public:
 
 	int checkAlpha(const string& str1, const string& str2)
 	{
-		unordered_map<char, int> letterCount1 = countLetters(str1);
-		unordered_map<char, int> letterCount2 = countLetters(str2);
+		unordered_map<char, int> letterCount1 = getLetterCount(str1);
+		unordered_map<char, int> letterCount2 = getLetterCount(str2);
 
-		int commonCount = 0;
+		int sameCount = 0;
 		int totalCount = letterCount1.size() + letterCount2.size();
 		for (const auto& pair : letterCount1) {
 			char letter = pair.first;
 			if (letterCount2.find(letter) != letterCount2.end()) {
 				if (letterCount2[letter] > 0) {
-					commonCount++;
+					sameCount++;
 					totalCount--;
 				}
 			}
 		}
 
-		if (commonCount == 0) return 0;
+		if (sameCount == 0) return 0;
 		
 		if (letterCount1.size() == letterCount2.size()
-			&& letterCount1.size() == commonCount) {
+			&& letterCount1.size() == sameCount) {
 			return MAX_ALPHA_POINT;
 		}
 
-		return (MAX_ALPHA_POINT * (double)commonCount / totalCount);
+		return (MAX_ALPHA_POINT * (double)sameCount / totalCount);
 	}
 
-	unordered_map<char, int> countLetters(const std::string& str) 
+	unordered_map<char, int> getLetterCount(const std::string& str) 
 	{
 		unordered_map<char, int> letterCount;
-
 		for (char ch : str) {
 			if (std::isalpha(ch)) {
 				char uppercaseCh = std::toupper(ch);
